@@ -48,11 +48,11 @@ func enterProcessManually(numberOfProcesses int) (processes []Process, totalTime
   maxArrivalTime := 0
   for i := 0; i < numberOfProcesses; i++ {
     var process Process
-    fmt.Println("Enter the burst time of the process ", i + 1, ": ")
+    fmt.Println("Ingrese el tiempo de duracion del proceso ", i + 1, ": ")
     fmt.Scanln(&process.burstTime)
-    fmt.Println("Enter the arrival time of the process ", i + 1, ": ")
+    fmt.Println("Ingresa el tiempo de llegada del proceso ", i + 1, ": ")
     fmt.Scanln(&process.arrivalTime)
-    fmt.Println("Enter the priority of the process ", i + 1, ": ")
+    fmt.Println("Ingresa la prioridad del proceso ", i + 1, ": ")
     fmt.Scanln(&process.priority)
     process.id = i
     processes = append(processes, process)
@@ -65,12 +65,14 @@ func enterProcessManually(numberOfProcesses int) (processes []Process, totalTime
 }
 
 func printProcesses(processes []Process, totalTime float64) {
+  fmt.Println("=====================================")
+  fmt.Println("Los procesos son: ")
   w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.Debug)
-  fmt.Fprintln(w, "ID\tBurst Time\tArrival Time\tPriority")
+  fmt.Fprintln(w, "ID\tDuracion del proceso\tTiempo de llegada\tPrioridad")
   for _, process := range processes {
     fmt.Fprintf(w, "%d\t%d\t%d\t%d\n", process.id, process.burstTime, process.arrivalTime, process.priority)
   }
-  fmt.Fprintln(w, "Total Time\t", totalTime)
+  fmt.Fprintln(w, "Tiempo total\t", totalTime)
   w.Flush()
 }
 

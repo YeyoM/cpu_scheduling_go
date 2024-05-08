@@ -22,7 +22,7 @@ func main() {
     case 3:
       return
     default:
-      fmt.Println("Invalid option")
+      fmt.Println("Opcion invalida")
     }
   }
 }

@@ -4,17 +4,19 @@ import "fmt"
 
 // Menus 
 func menu() {
-  fmt.Println("CPU Scheduler")
-  fmt.Println("1. Shortest Job First")
+  fmt.Println("=====================================")
+  fmt.Println("Simulador de algoritmos de planificacion de procesos")
+  fmt.Println("1. Shortest Job First (Proceso mas corto primero)")
   fmt.Println("2. Round Robin")
-  fmt.Println("3. Exit")
-  fmt.Print("Enter an option: ")
+  fmt.Println("3. Salir")
+  fmt.Print("Ingrese una opcion: ")
 }
 
 func menuProcess() {
-  fmt.Println("Process")
-  fmt.Println("1. Generate random processes")
-  fmt.Println("2. Enter processes manually")
-  fmt.Println("3. Back")
-  fmt.Print("Enter an option: ")
+  fmt.Println("=====================================")
+  fmt.Println("Procesos")
+  fmt.Println("1. Generar procesos aleatorios")
+  fmt.Println("2. Ingresar procesos manualmente")
+  fmt.Println("3. Atras")
+  fmt.Print("Ingrese una opcion: ")
 }

@@ -19,13 +19,17 @@ func shortestJobFirst() {
     fmt.Scanln(&option)
     switch option {
     case 1:
-      fmt.Println("Enter the number of processes: ")
+      fmt.Println("=====================================")
+      fmt.Println("Proceso mas corto primero")
+      fmt.Println("Ingrese el numero de procesos: ")
       fmt.Scanln(&numberOfProcesses)
       processes, totalTime := generateRandomProcess(numberOfProcesses)
       printProcesses(processes, totalTime)
       shortestJobFirstAlgorithm(processes, totalTime)
     case 2:
-      fmt.Println("Enter the number of processes: ")
+      fmt.Println("=====================================")
+      fmt.Println("Proceso mas corto primero")
+      fmt.Println("Ingrese el numero de procesos: ")
       fmt.Scanln(&numberOfProcesses)
       processes, totalTime := enterProcessManually(numberOfProcesses)
       printProcesses(processes, totalTime)
@@ -33,7 +37,7 @@ func shortestJobFirst() {
     case 3:
       return
     default:
-      fmt.Println("Invalid option")
+      fmt.Println("Opccion invalida")
     }
   }
 }
@@ -47,25 +51,29 @@ func roundRobin() {
     fmt.Scanln(&option)
     switch option {
     case 1:
-      fmt.Println("Enter the number of processes: ")
+      fmt.Println("=====================================")
+      fmt.Println("Round Robin")
+      fmt.Println("Ingrese el numero de procesos: ")
       fmt.Scanln(&numberOfProcesses)
       processes, totalTime := generateRandomProcess(numberOfProcesses)
-      fmt.Println("Enter the time slice: ")
+      fmt.Println("Ingrese el tiempo de rafaga: ")
       fmt.Scanln(&timeSlice)
       printProcesses(processes, totalTime)
       roundRobinAlgorithm(processes, totalTime, timeSlice)
     case 2:
-      fmt.Println("Enter the number of processes: ")
+      fmt.Println("=====================================")
+      fmt.Println("Round Robin")
+      fmt.Println("Ingrese el numero de procesos: ")
       fmt.Scanln(&numberOfProcesses)
       processes, totalTime := enterProcessManually(numberOfProcesses)
-      fmt.Println("Enter the time slice: ")
+      fmt.Println("Ingrese el tiempo de rafaga: ")
       fmt.Scanln(&timeSlice)
       printProcesses(processes, totalTime)
       roundRobinAlgorithm(processes, totalTime, timeSlice)
     case 3:
       return
     default:
-      fmt.Println("Invalid option")
+      fmt.Println("Opccion invalida")
     }
   }
 }
@@ -110,10 +118,11 @@ func shortestJobFirstAlgorithm(processes []Process, totalTime float64) {
   }
 
   // Print the clock cycle array
+  fmt.Println("Tabla de procesos")
   w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.Debug)
-  fmt.Fprintln(w, "ID\tBurst Time\tArrival Time\tReal Arrival Time\tPriority\tTime")
+  fmt.Fprintln(w, "ID\tTiempo de rafaga\tTiempo de llegada\tTiempo de inicio\tPrioridad")
   for _, clock := range clockCycle {
-    fmt.Fprintf(w, "%d\t%d\t%d\t%.2f\t%d\t%.2f\n", clock.process.id, clock.process.burstTime, clock.process.arrivalTime, clock.time, clock.process.priority, clock.time)
+    fmt.Fprintf(w, "%d\t%d\t%d\t%.2f\t%d\n", clock.process.id, clock.process.burstTime, clock.process.arrivalTime, clock.time, clock.process.priority)
   }
   w.Flush()
 
@@ -171,10 +180,11 @@ func roundRobinAlgorithm(processes []Process, totalTime float64, timeSlice int) 
   }
 
   // Print the clock cycle array
+  fmt.Println("Tabla de procesos")
   w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.Debug)
-  fmt.Fprintln(w, "ID\tBurst Time\tArrival Time\tReal Arrival Time\tPriority\tTime")
+  fmt.Fprintln(w, "ID\tTiempo de rafaga\tTiempo de llegada\tTiempo de inicio\tPrioridad")
   for _, clock := range clockCycle {
-    fmt.Fprintf(w, "%d\t%d\t%d\t%.2f\t%d\t%.2f\n", clock.process.id, clock.process.burstTime, clock.process.arrivalTime, clock.time, clock.process.priority, clock.time)
+    fmt.Fprintf(w, "%d\t%d\t%d\t%.2f\t%d\n", clock.process.id, clock.process.burstTime, clock.process.arrivalTime, clock.time, clock.process.priority)
   }
   w.Flush()
 
